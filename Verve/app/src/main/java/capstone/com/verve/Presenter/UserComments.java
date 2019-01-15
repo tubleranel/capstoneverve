@@ -2,22 +2,31 @@ package capstone.com.verve.Presenter;
 
 public class UserComments {
 
-    private String firstname, middlename, lastname, date, time, comment;
+    private String firstname, middlename, lastname, date, time, comment, uid;
 
     public UserComments() {
     }
 
-    public UserComments(String firstname, String middlename, String lastname, String date, String time, String comment) {
+    public UserComments(String firstname, String middlename, String lastname, String date, String time, String comment, String uid) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
         this.date = date;
         this.time = time;
         this.comment = comment;
+        this.uid = uid;
     }
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public String getUid(){
+        return uid;
+    }
+
+    public void setUid(String uid){
+        this.uid = uid;
     }
 
     public void setFirstname(String firstname) {

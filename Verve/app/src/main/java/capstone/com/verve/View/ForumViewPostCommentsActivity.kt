@@ -1,5 +1,6 @@
 package capstone.com.verve.View
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import capstone.com.verve.API.FirebaseConnection
 import capstone.com.verve.Model.ForumData
 import capstone.com.verve.Presenter.Posts
@@ -50,6 +52,7 @@ class ForumViewPostCommentsActivity : AppCompatActivity() {
     var commentComment: TextView? = null
     var sendComment: ImageButton? = null
     var editComment: EditText? = null
+    var txt_name: TextView? = null
     internal var postComment = Posts()
     lateinit var cDatabase: DatabaseReference
     /*FOR COMMENTS*/
@@ -74,6 +77,8 @@ class ForumViewPostCommentsActivity : AppCompatActivity() {
         sendComment = findViewById(R.id.btn_sendcomment)
         editComment = findViewById(R.id.editComment)
 
+
+
         sendComment?.setOnClickListener {
 
             postComment.saveComment(firebaseConnection.getProfileReference("Users"),firebaseConnection.firebaseAuth, postId,
@@ -81,6 +86,9 @@ class ForumViewPostCommentsActivity : AppCompatActivity() {
 
         }
         /*FOR SENDING COMMENT*/
+
+        /*FOR VIEWING PROFILE*/
+
 
         /*FOR COMMENTS RECYCLERVIEW*/
         cDatabase = FirebaseDatabase.getInstance().reference
@@ -103,6 +111,8 @@ class ForumViewPostCommentsActivity : AppCompatActivity() {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_posts_comments, parent, false)
 
+                txt_name = view.findViewById(R.id.txt_name)
+
                 commentUsername = view.findViewById(R.id.txt_name)
                 commentDate = view.findViewById(R.id.txt_commentdate)
                 commentTime = view.findViewById(R.id.txt_commenttime)
@@ -113,6 +123,31 @@ class ForumViewPostCommentsActivity : AppCompatActivity() {
 
             override fun onBindViewHolder(holder: CommentsViewHolder, position: Int, model: UserComments) {
                 holder.bind(model)
+
+                txt_name?.setOnClickListener {
+                    var commentId: String? = null
+
+                    commentId = getRef(position).key
+
+                    commentsQuery.child(commentId!!).addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            val userId = dataSnapshot.child("uid").getValue(String::class.java)
+                            if (userId.equals(firebaseConnection.currentUser)) {
+                                val intent = Intent(this@ForumViewPostCommentsActivity, ProfileActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(this@ForumViewPostCommentsActivity, commentId!!, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+
+                        }
+                    })
+
+                }
+
 
             }
 

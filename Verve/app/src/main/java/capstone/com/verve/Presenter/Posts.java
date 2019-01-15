@@ -148,7 +148,7 @@ public class Posts {
         final String commentPost = comment.getText().toString();
 
 
-        String currUser = auth.getCurrentUser().getUid();
+        final String currUser = auth.getCurrentUser().getUid();
 
         commentUniqueKey = currUser.concat(commentDate).concat(commentTime);
 
@@ -161,7 +161,7 @@ public class Posts {
                     String lastname = dataSnapshot.child("lastname").getValue(String.class);
 
                     UserComments userComments = new UserComments(firstname, middlename, lastname, commentDatePost,
-                            commentTimePost, commentPost);
+                            commentTimePost, commentPost, currUser);
 
                     postRef.child(postKey).child("Comments").child(commentUniqueKey).setValue(userComments).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
