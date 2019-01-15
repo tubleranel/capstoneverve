@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+	<android.support.v7.widget.CardView
+			android:layout_height="wrap_content"
+			app:cardElevation="4dp"
+			android:id="@+id/card_post"
+			android:layout_width="match_parent"
+			app:cardCornerRadius="10dp"
+			android:layout_marginLeft="13dp"
+			android:layout_marginRight="13dp"
+			android:layout_marginTop="9dp"
+			android:layout_marginBottom="9dp"
+			app:cardPreventCornerOverlap="false"
+	>
+
+		<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="10dp"
+		>
+
+			<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="10dp">
+
+				<ImageView
+						android:layout_height="40dp"
+						app:srcCompat="@drawable/profileicongren"
+						android:id="@+id/img_patient"
+						android:layout_width="40dp"/>
+
+				<LinearLayout
+						android:orientation="vertical"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_marginLeft="5dp"
+				>
+
+					<LinearLayout
+							android:orientation="horizontal"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="3dp">
+
+						<LinearLayout
+								android:orientation="horizontal"
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								android:layout_weight="1">
+
+							<TextView
+									android:text="[Name of Patient]"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:id="@+id/txtName"
+									android:layout_marginLeft="5dp"
+									android:layout_marginRight="70dp"
+									android:textStyle="bold"
+									android:textAppearance="@style/TextAppearance.AppCompat"
+									android:textSize="16sp"/>
+						</LinearLayout>
+
+					</LinearLayout>
+
+					<LinearLayout
+							android:orientation="horizontal"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+						<TextView
+								android:text="[Cancer Type]"
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								android:textSize="10dp"
+								android:layout_marginLeft="5dp"
+								android:layout_weight="0.1"
+								android:id="@+id/txtCancerType"/>
+
+						<TextView
+								android:text="・"
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								android:textSize="12dp"
+								android:layout_gravity="center"
+								android:layout_marginLeft="5dp"
+								android:layout_weight="0.1"
+								android:id="@+id/txtDot"/>
+
+						<TextView
+								android:text="[Date]"
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								android:textSize="10dp"
+								android:layout_marginLeft="5dp"
+								android:layout_weight="0.1"
+								android:id="@+id/txtDate"/>
+
+						<TextView
+								android:text="[Time]"
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								android:id="@+id/txtTime"
+								android:layout_weight="5"
+								android:textSize="10dp"/>
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp">
+
+				<TextView
+						android:text="[THIS IS THE TITLE OF THE POST]"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/txtPostTitle"
+						android:layout_marginBottom="5dp"
+						android:layout_weight="1"
+						android:textStyle="bold"
+						android:textSize="15dp"/>
+
+				<TextView
+						android:text="[This is the description of the post. This is the description of the post. This is the description of the post. This is the description of the post.]"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/txtPostDetails"
+						android:layout_marginBottom="5dp"
+						android:layout_weight="1"
+						android:textColor="@color/LightGray"/>
+
+			</LinearLayout>
+			<View android:background="@color/Pale"
+				  android:layout_width="match_parent"
+				  android:layout_marginTop="2dp"
+				  android:layout_marginBottom="7dp"
+				  android:layout_height="1.5dp"/>
+			<LinearLayout
+					android:orientation="horizontal"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp" android:layout_width="match_parent">
+
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+					<ImageView
+							android:layout_width="55dp"
+							app:srcCompat="@drawable/grayheart"
+							android:layout_gravity="end"
+							android:layout_marginRight="5dp"
+							android:id="@+id/img_heart" android:layout_weight="1" android:scaleType="fitEnd"
+							android:adjustViewBounds="false" android:layout_height="26dp"/>
+					<TextView
+							android:text="15"
+							android:layout_width="wrap_content"
+							android:gravity="center|left"
+							android:layout_height="match_parent"
+							android:id="@+id/txtHearts" android:layout_weight="1"
+							android:textSize="16sp"/>
+				</LinearLayout>
+
+				<View
+						android:layout_width="1.5dp"
+						android:layout_height="30dp"
+						android:background="@color/Pale" />
+
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+					<ImageButton
+							android:layout_width="55dp"
+							android:layout_marginRight="5dp"
+                            android:background="@null"
+							android:layout_height="30dp" app:srcCompat="@drawable/commenticon"
+							android:id="@+id/img_comment" android:layout_weight="1" android:scaleType="fitEnd"/>
+					<TextView
+							android:text="69"
+							android:layout_width="wrap_content"
+							android:gravity="center|left"
+							android:layout_height="match_parent" android:id="@+id/txtComments" android:layout_weight="1"
+							android:textSize="16sp"/>
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</android.support.v7.widget.CardView>
+</LinearLayout>
